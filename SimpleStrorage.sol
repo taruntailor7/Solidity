@@ -12,6 +12,16 @@ contract SimpleStorage {
     function Store(uint256 _favouriteNumber) public {
         favouriteNumber = _favouriteNumber;
     }
+
+    // view function
+    function retrieve() public view returns(uint256){
+        return favouriteNumber;
+    }
+
+    // pure function
+    function add() public pure returns(uint256){
+        return (1 + 1);
+    }
 }
 
 // 0xd9145CCE52D386f254917e481eB44e9943F39138 
