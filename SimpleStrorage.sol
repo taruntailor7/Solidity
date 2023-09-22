@@ -8,6 +8,9 @@ contract SimpleStorage {
 
     // uint256 favouriteNumber;  // Visibility is Private now for our Number.
     uint256 public favouriteNumber; // Now Visibilit is Public for our Number.
+    
+    // Mappig string to a particular number (key -> value pair)
+    mapping(string => uint256) public nameToFavouriteNumber;        
 
     struct People {
         uint favouriteNumber;
@@ -15,7 +18,7 @@ contract SimpleStorage {
     }
 
     // Single Person
-    People public person = People({favouriteNumber: 7, name: "Tarun"});
+    People public person =  People({favouriteNumber: 7, name: "Tarun"});
 
     // List of People type -> uint256[] public favouriteNumberLists
     People[] public people; // Dynamic Array because size is not given. ( People[3] -> Fixed Array Size is 3. )
@@ -35,11 +38,10 @@ contract SimpleStorage {
     }
 
     function addPerson(string memory _name, uint _favouriteNumber) public {
-        People memory newPerson = People({favouriteNumber: _favouriteNumber, name: _name}); // People memory newPerson = People(_favouriteNumber, _name); // Another way
-        people.push(newPerson); // First Way.
-
-        // people.push(People(_favouriteNumber, _name)); // Second Way.
+        people.push(People(_favouriteNumber, _name));
+        nameToFavouriteNumber[_name] = _favouriteNumber; // For Mapping (Storing in map also)
     }
+
 }
 
 // 0xd9145CCE52D386f254917e481eB44e9943F39138 
