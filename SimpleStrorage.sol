@@ -23,6 +23,7 @@ contract SimpleStorage {
     // List of People type -> uint256[] public favouriteNumberLists
     People[] public people; // Dynamic Array because size is not given. ( People[3] -> Fixed Array Size is 3. )
 
+    // adding virtual so that we can override this in another contract.
     function Store(uint256 _favouriteNumber) public {
         favouriteNumber = _favouriteNumber;
     }
