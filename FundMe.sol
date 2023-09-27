@@ -35,5 +35,10 @@ contract FundMe {
         // reset the array
         funders = new address[](0);
         // actually withraw the funds
+
+        // 3 different ways to do this
+        // transfer
+        // send
+        // call
     }
 }
