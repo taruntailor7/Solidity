@@ -25,5 +25,15 @@ contract FundMe {
         // undo any action before, and send remaininh gas back.
     }
 
-    // function withraw() {}
+    function withraw() public {
+        // for loop
+        /* starting index, ending index, step amount */
+        for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+        // reset the array
+        funders = new address[](0);
+        // actually withraw the funds
+    }
 }
