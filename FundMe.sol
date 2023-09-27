@@ -20,7 +20,7 @@ contract FundMe {
         // 1. How do we send ETH to this contract?
         require(msg.value.getConversionRate() >= minimumUsd, "Didn't send enough"); // 1e18 == 1 * 10 ** 18 = 1000000000000000000
         funders.push(msg.sender);
-        addressToAmountFunded[msg.sender] = msg.value;
+        addressToAmountFunded[msg.sender] += msg.value;
         // What is reverting?
         // undo any action before, and send remaininh gas back.
     }
