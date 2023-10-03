@@ -37,8 +37,13 @@ contract FundMe {
         // actually withraw the funds
 
         // 3 different ways to do this
-        // transfer
-        // send
-        // call
+        // 1 - transfer
+        // payable(msg.sender).transfer(address(this).balance);
+        // 2 - send
+        // bool sendSuccess = payable(msg.sender).send(address(this).balance);
+        // require(sendSuccess, "Send Failed");
+        // 3 - call
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess, "Call Failed");
     }
 }
